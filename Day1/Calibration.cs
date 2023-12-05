@@ -33,7 +33,7 @@ namespace Day1
         private List<int> GetCalibrationValue()
         {
             var output = new List<int>();
-            var regex = RawCalibRegex();
+            var regex = new Regex(@"\d");//RawCalibRegex();
             foreach (string rawCalibText in _rawCalibrationValues)
             {
                 string firstDigitText = regex.Matches(rawCalibText).First().Value;
@@ -49,7 +49,7 @@ namespace Day1
         private List<int> GetCalibrationWithSpelledValue()
         {
             var output = new List<int>();
-            var regex = RawCalibWithSpelledDigitRegex();
+            var regex = new Regex(@"(?=(\d|one|two|three|four|five|six|seven|eight|nine))"); //RawCalibWithSpelledDigitRegex();
             foreach (string rawCalibText in _rawCalibrationValues)
             {
                 string firstDigitText = regex.Matches(rawCalibText).First().Groups[1].Value;
@@ -71,7 +71,7 @@ namespace Day1
                 {
                     calibValue += IntifySpelledDigit(lastDigitText);
                 }
-                Console.WriteLine($"{rawCalibText} -> {calibValue}");
+                //Console.WriteLine($"{rawCalibText} -> {calibValue}");
                 output.Add(calibValue);
             }
             
@@ -94,9 +94,9 @@ namespace Day1
             };
 
 
-        [GeneratedRegex(@"\d")]
-        private static partial Regex RawCalibRegex();
-        [GeneratedRegex(@"(?=(\d|one|two|three|four|five|six|seven|eight|nine))")]
-        private static partial Regex RawCalibWithSpelledDigitRegex();
+        //[GeneratedRegex(@"\d")]
+        //private static partial Regex RawCalibRegex();
+        //[GeneratedRegex(@"(?=(\d|one|two|three|four|five|six|seven|eight|nine))")]
+        //private static partial Regex RawCalibWithSpelledDigitRegex();
     }
 }
