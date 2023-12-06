@@ -1,5 +1,6 @@
 ﻿using Day1;
 using Day2;
+using Day3;
 
 namespace AdventOfCode2023;
 
@@ -29,5 +30,10 @@ internal class Program
         Console.WriteLine($"First part result : {sumPossibleGame}");
         Console.WriteLine($"Second part : {elfGameGuesser.GetPower()}");
 
+        Console.WriteLine("************** Day 3 ******************");
+        var engineSchema = new EngineSchema(Path.Combine(dataPath, "Day3Example1.txt"));
+        Console.WriteLine($"Example 1 result : {engineSchema.SumEnginePart()}");
+        engineSchema = new EngineSchema(Path.Combine(dataPath, "Day3Input1.txt"));
+        Console.WriteLine($"Part 1 result : {engineSchema.SumEnginePart()}");
     }
 }

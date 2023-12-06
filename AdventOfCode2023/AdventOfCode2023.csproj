@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Day1\Day1.csproj" />
     <ProjectReference Include="..\Day2\Day2.csproj" />
+    <ProjectReference Include="..\Day3\Day3.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="DayInputs\Day2Input1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DayInputs\Day3Example1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DayInputs\day3Input1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
