@@ -33,7 +33,9 @@ internal class Program
         Console.WriteLine("************** Day 3 ******************");
         var engineSchema = new EngineSchema(Path.Combine(dataPath, "Day3Example1.txt"));
         Console.WriteLine($"Example 1 result : {engineSchema.SumEnginePart()}");
+        Console.WriteLine($"Example 2 result : {engineSchema.GearRatioSum}");
         engineSchema = new EngineSchema(Path.Combine(dataPath, "Day3Input1.txt"));
         Console.WriteLine($"Part 1 result : {engineSchema.SumEnginePart()}");
+        Console.WriteLine($"Part 2 result : {engineSchema.GearRatioSum}");
     }
 }

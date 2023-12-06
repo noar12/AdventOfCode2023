@@ -13,11 +13,13 @@ namespace Day3
     {
         private List<Point> _specialPosition = new();
         private List<EnginePart> _engineParts = new();
+        private List<int> _gearRatios = new();
         public EngineSchema(string path)
         {
             string[] schemaLines = File.ReadAllLines(path);
             var specialRegex = new Regex(@"[^\d\.\n]+");
             var partRegex = new Regex(@"\d+");
+            var gearRegex = new Regex(@"\*");
             for (int lineNumber = 0; lineNumber < schemaLines.Length; ++lineNumber)
             {
                 var matches = specialRegex.Matches(schemaLines[lineNumber]);
@@ -50,6 +52,21 @@ namespace Day3
                     if (match.Index < (schemaLines[lineNumber].Length - 1)) part.Border.Add(new Point(match.Index + match.Length, lineNumber));
                     _engineParts.Add(part);
                 }
+
+            }
+            // I need to have already all part parsed to determine gears 
+            for (int lineNumber = 0; lineNumber < schemaLines.Length; ++lineNumber)
+            {
+                var matches = gearRegex.Matches(schemaLines[lineNumber]);
+                foreach (var match in matches.Cast<Match>())
+                {
+                    var gearPoint = new Point(match.Index, lineNumber);
+                    int? gearRatio = GearRatio(gearPoint);
+                    if (gearRatio is not null)
+                    {
+                        _gearRatios.Add(gearRatio.Value);
+                    }
+                }
             }
         }
 
@@ -62,5 +79,16 @@ namespace Day3
             }
             return output;
         }
+        private int? GearRatio(Point point)
+        {
+            var connectedPart = _engineParts.Where(p => p.Border.Contains(point)).ToList();
+            if (connectedPart.Count == 2)
+            {
+                return connectedPart[0].Value * connectedPart[1].Value;
+            }
+            return null;
+        }
+        public int GearRatioSum => _gearRatios.Sum();
+
     }
 }
