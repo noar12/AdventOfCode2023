@@ -37,7 +37,7 @@ public class ScratchCardCollection
     {
         return _cards.Sum(c => c.GetPoints());
     }
-    private void processAndCopy(List<ScratchCard> cards)
+    private void ProcessAndCopy(List<ScratchCard> cards)
     {
         var wonCards = new List<ScratchCard>();
         for (int i = 0; i < cards.Count; i++)
@@ -55,12 +55,12 @@ public class ScratchCardCollection
                 }
             }
         }
-        if (wonCards.Count > 0) processAndCopy(wonCards);
+        if (wonCards.Count > 0) ProcessAndCopy(wonCards);
     }
     public int GetCardCountAfterProcess()
     {
         var cardsCopy = new List<ScratchCard>(_cards);
-        processAndCopy(cardsCopy);
+        ProcessAndCopy(cardsCopy);
         return _cards.Count;
     }
 }

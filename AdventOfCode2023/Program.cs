@@ -2,6 +2,7 @@
 using Day2;
 using Day3;
 using Day4;
+using Day5;
 
 namespace AdventOfCode2023;
 
@@ -45,6 +46,11 @@ internal class Program
         Console.WriteLine($"Example 2 result : {cardsCollection.GetCardCountAfterProcess()}");
         cardsCollection = new ScratchCardCollection(Path.Combine(dataPath, "Day4Input1.txt"), 1, 10, 11, 35);
         Console.WriteLine($"First part result : {cardsCollection.GetTotalPoints()}");
-        Console.WriteLine($"Part 2 result : {cardsCollection.GetCardCountAfterProcess()}");
+        //Console.WriteLine($"Part 2 result : {cardsCollection.GetCardCountAfterProcess()}");
+        Console.WriteLine($"Part 2 result : not enabled");
+
+        Console.WriteLine("************** Day 4 ******************");
+        var almannac = new Almanac(Path.Combine(dataPath, "Day5Example1.txt"));
+
     }
 }
