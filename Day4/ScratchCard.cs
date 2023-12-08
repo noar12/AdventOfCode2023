@@ -13,7 +13,10 @@ public class ScratchCard
     public List<int> Numbers { get; set; } = new();
     public int GetPoints()
     {
-        int matchCount = Numbers.Count(n => WinningNumbers.Contains(n));
-        return (int)Math.Pow(2, matchCount-1);
+        return (int)Math.Pow(2, GetMatchesCount() - 1);
+    }
+    public int GetMatchesCount()
+    {
+        return Numbers.Count(n => WinningNumbers.Contains(n));
     }
 }

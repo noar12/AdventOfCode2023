@@ -37,4 +37,30 @@ public class ScratchCardCollection
     {
         return _cards.Sum(c => c.GetPoints());
     }
+    private void processAndCopy(List<ScratchCard> cards)
+    {
+        var wonCards = new List<ScratchCard>();
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if (cards[i].GetMatchesCount() != 0)
+            {
+                for (int j = 0; j < cards[i].GetMatchesCount(); j++)
+                {
+                    var wonCard = _cards.Find(c => c.Id == (cards[i].Id + j + 1));
+                    if (wonCard != null)
+                    {
+                        wonCards.Add(wonCard);
+                        _cards.Add(wonCard);
+                    }
+                }
+            }
+        }
+        if (wonCards.Count > 0) processAndCopy(wonCards);
+    }
+    public int GetCardCountAfterProcess()
+    {
+        var cardsCopy = new List<ScratchCard>(_cards);
+        processAndCopy(cardsCopy);
+        return _cards.Count;
+    }
 }
