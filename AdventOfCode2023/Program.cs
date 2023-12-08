@@ -1,6 +1,7 @@
 ﻿using Day1;
 using Day2;
 using Day3;
+using Day4;
 
 namespace AdventOfCode2023;
 
@@ -37,5 +38,11 @@ internal class Program
         engineSchema = new EngineSchema(Path.Combine(dataPath, "Day3Input1.txt"));
         Console.WriteLine($"Part 1 result : {engineSchema.SumEnginePart()}");
         Console.WriteLine($"Part 2 result : {engineSchema.GearRatioSum}");
+
+        Console.WriteLine("************** Day 4 ******************");
+        var cardsCollection = new ScratchCardCollection(Path.Combine(dataPath, "Day4Example1.txt"),1,5,6,13);
+        Console.WriteLine($"Example 1 result : {cardsCollection.GetTotalPoints()}");
+        cardsCollection = new ScratchCardCollection(Path.Combine(dataPath, "Day4Input1.txt"), 1, 10, 11, 35);
+        Console.WriteLine($"First part result : {cardsCollection.GetTotalPoints()}");
     }
 }
